@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:transaction_app/presentation/components//components.dart';
 import 'package:transaction_app/presentation/components/buttons/normal_button.dart';
-import 'package:transaction_app/shareds/spaces.dart';
+import 'package:transaction_app/presentation/components/spaces/spaces.dart';
 
 class AddTransactionPage extends StatelessWidget {
   final _loadingDialog = LoadingDialog();
