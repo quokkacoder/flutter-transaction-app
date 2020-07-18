@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:transaction_app/presentation/route/named_route.dart';
-import 'package:transaction_app/presentation/route/route.dart';
-import 'package:transaction_app/presentation/themes/themes.dart';
+import 'package:transaction_app/app.dart';
+import 'package:transaction_app/di_containter.dart';
 
 void main() {
   ScreenUtil.init(width: 480, height: 800, allowFontScaling: false);
+  setUpLocator();
   runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: AppThemes.defaultTheme,
-      onGenerateRoute: routes(),
-      initialRoute: NamedRoute.listTrans,
-    );
-  }
 }

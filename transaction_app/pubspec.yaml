@@ -28,6 +28,7 @@ dependencies:
   path: ^1.6.4
   equatable: ^1.2.2
   dartz: ^0.9.1
+  get_it: ^4.0.2
 
 dev_dependencies:
   flutter_test:
