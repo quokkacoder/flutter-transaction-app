@@ -4,7 +4,7 @@ import 'package:transaction_app/core/database/tables/transaction_tab.dart';
 
 class AppDb {
   static const DB_NAME = "transaction.db";
-  static const DB_VERSION = 1;
+  static const DB_VERSION = 4;
   static Database _database;
 
   static final AppDb _dbInstance = AppDb._internal();
@@ -14,7 +14,7 @@ class AppDb {
   AppDb._internal();
 
   static const initScripts = [TransactionTable.CREATE_TABLE_QUERY];
-  static const migrationScripts = [TransactionTable.CREATE_TABLE_QUERY];
+  static const migrationScripts = [TransactionTable.DROP_TABLE_QUERY];
 
   Future<Database> get database async {
     if (_database != null) return _database;
@@ -28,6 +28,7 @@ class AppDb {
       initScripts.forEach((script) => db.execute(script));
     }, onUpgrade: (db, oldV, newV) {
       migrationScripts.forEach((script) => db.execute(script));
+      initScripts.forEach((script) => db.execute(script));
     });
   }
 }

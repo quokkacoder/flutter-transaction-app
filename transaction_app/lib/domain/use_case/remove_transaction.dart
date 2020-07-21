@@ -9,6 +9,6 @@ class RemoveTransaction extends UseCaseNormal<bool, String> {
 
   @override
   Future<bool> call(String params) async {
-    return await transactionRepo.removeTransaction(params);
+    return await transactionRepo.removeTransaction(int.parse(params));
   }
 }

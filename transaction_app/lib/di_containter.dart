@@ -15,5 +15,7 @@ setUpLocator() {
           () => TransactionSourceImpl(table: locator()));
 
   // Repo
-  locator.registerLazySingleton<TransactionRepo>(() => TransactionRepoImpl());
+  locator.registerLazySingleton<TransactionRepo>(() => TransactionRepoImpl(
+    sourceLocal: locator()
+  ));
 }

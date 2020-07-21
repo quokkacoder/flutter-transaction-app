@@ -29,6 +29,7 @@ dependencies:
   equatable: ^1.2.2
   dartz: ^0.9.1
   get_it: ^4.0.2
+  flutter_hooks: ^0.12.0
 
 dev_dependencies:
   flutter_test:

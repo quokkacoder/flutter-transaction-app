@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppThemes.defaultTheme,
       onGenerateRoute: routes(),
-      initialRoute: NamedRoute.listTrans,
+      initialRoute: NamedRoute.splash,
     );
   }
 }

@@ -4,11 +4,13 @@ import 'package:transaction_app/presentation/themes/simple_styles/colors.dart';
 class PageContainer extends StatelessWidget {
   final String title;
   final Widget child;
+  final bool autoLead;
   final List<Widget> actions;
 
   PageContainer({
-    this.title,
-    this.child,
+    @required this.title,
+    this.autoLead = true,
+    @required this.child,
     this.actions = const [],
   });
 
@@ -17,6 +19,7 @@ class PageContainer extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        automaticallyImplyLeading: autoLead,
         title: Text(
           title,
           style: Theme.of(context)

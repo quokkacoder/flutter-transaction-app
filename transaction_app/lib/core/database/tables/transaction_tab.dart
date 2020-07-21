@@ -6,8 +6,10 @@ abstract class TransactionTable {
   static const TABLE_NAME = 'todo';
   static const CREATE_TABLE_QUERY = '''
       CREATE TABLE $TABLE_NAME(
-          id INTEGER PRIMARY KEY, 
-          content TEXT
+          id INTEGER PRIMARY KEY AUTOINCREMENT, 
+          name TEXT,
+          money INTEGER,
+          type VARCHAR(10)
       );
   ''';
   static const DROP_TABLE_QUERY = '''
@@ -16,7 +18,7 @@ abstract class TransactionTable {
 
   Future<int> insert(MTransaction trans);
 
-  Future<int> delete(String tranId);
+  Future<int> delete(int tranId);
 
   Future<bool> update(MTransaction newTran);
 
@@ -25,11 +27,11 @@ abstract class TransactionTable {
 
 class TransactionTableImpl implements TransactionTable {
   @override
-  Future<int> delete(String tranId) async {
+  Future<int> delete(int tranId) async {
     final db = await AppDb().database;
 
     return db.delete(TransactionTable.TABLE_NAME,
-        where: '_id = ?', whereArgs: [tranId]);
+        where: 'id = ?', whereArgs: [tranId]);
   }
 
   @override
@@ -43,7 +45,7 @@ class TransactionTableImpl implements TransactionTable {
   Future<List<MTransaction>> selectAll({int limit = 40}) async {
     final db = await AppDb().database;
     final maps = await db.query(TransactionTable.TABLE_NAME,
-        orderBy: "_id DESC", limit: limit);
+        orderBy: "id DESC", limit: limit);
 
     return List.generate(
         maps.length, (index) => MTransaction.fromData(maps[index]));

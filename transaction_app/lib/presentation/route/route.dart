@@ -3,6 +3,7 @@ import 'package:transaction_app/app.dart';
 import 'package:transaction_app/main.dart';
 import 'package:transaction_app/presentation/pages/add_trans/add_transaction_page.dart';
 import 'package:transaction_app/presentation/pages/list_trans/list_transaction_page.dart';
+import 'package:transaction_app/presentation/pages/splash/failed_page.dart';
 import 'package:transaction_app/presentation/pages/splash/splash_page.dart';
 import 'package:transaction_app/presentation/route/named_route.dart';
 import 'package:transaction_app/presentation/components/components.dart';
@@ -19,8 +20,15 @@ RouteFactory routes() {
       case NamedRoute.splash:
         screen = SplashPage();
         break;
+      case NamedRoute.appFailed:
+        screen = AppFailedPage(
+          mess: args['message'],
+        );
+        break;
       case NamedRoute.listTrans:
-        screen = ListTransactionPage();
+        screen = ListTransactionPage(
+          transactions: args['transactions'],
+        );
         break;
       case NamedRoute.addTrans:
         screen = AddTransactionPage();
